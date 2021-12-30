@@ -13,9 +13,3 @@
       patch: 13
       b: 8
 - import_playbook: test-ver.yml
-  vars:
-    temurin_ver:
-      major: 17
-      minor: 0
-      patch: 1
-      b: 12
