@@ -1,0 +1,135 @@
+---
+# defaults file for temurin
+#temurin_app: jre
+#temurin_ver:
+#  major: 8
+#  minor: 312
+#  b: '07'
+
+temurin_os: linux
+temurin_arch: x64
+
+temurin_parent_install_dir: /usr/local
+temurin_mirror: https://github.com/adoptium
+temurin_checksums:
+    '8u312b07':
+      jdk:
+        # https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u312-b07/OpenJDK8U-jdk_x64_linux_hotspot_8u312b07.tar.gz.sha256.txt
+        linux_x64: sha256:699981083983b60a7eeb511ad640fae3ae4b879de5a3980fe837e8ade9c34a08
+        # https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u312-b07/OpenJDK8U-jdk_x64_windows_hotspot_8u312b07.zip.sha256.txt
+        windows_x64: sha256:d957ada22f53d201d78f0ad3844e9e55da0b279e67c1e6c9366276cb5d8a981a
+        # https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u312-b07/OpenJDK8U-jdk_x86-32_windows_hotspot_8u312b07.zip.sha256.txt
+        windows_x86-32: sha256:f9c89272593d9fde5d6281f3310e3c6f34ac823fd710d29cf2b40df2397960fb
+        # https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u312-b07/OpenJDK8U-jdk_aarch64_linux_hotspot_8u312b07.tar.gz.sha256.txt
+        linux_aarch64: sha256:87ff502eba3008cac71edeb9595398a73dc14883fe3072d152e731bf0877897e
+        # https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u312-b07/OpenJDK8U-jdk_arm_linux_hotspot_8u312b07.tar.gz.sha256.txt
+        linux_arm: sha256:5a9e72c6c20373aa380554a6d7191a258540d2a0399d842223b8d5eb0f74b298
+        # https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u312-b07/OpenJDK8U-jdk_ppc64le_linux_hotspot_8u312b07.tar.gz.sha256.txt
+        linux_ppc64le: sha256:ddce3f067eab6fd98bb2a8ea3d18de6b09ea41d10382c76ad22bd3e7895951cf
+        # https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u312-b07/OpenJDK8U-jdk_x64_mac_hotspot_8u312b07.tar.gz.sha256.txt
+        mac_x64: sha256:2428e7fbd0dfb7416783df89398c0ccc0fa883f4fabce0e9b83388bc2109268e
+        # https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u312-b07/OpenJDK8U-jdk_ppc64_aix_hotspot_8u312b07.tar.gz.sha256.txt
+        aix_ppc64: sha256:70b1ab13deab6d6a2ba0ea511da195d1937aebd2a26b1e0a1758d4b96e057ee8
+      jre:
+        # https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u312-b07/OpenJDK8U-jre_x64_linux_hotspot_8u312b07.tar.gz.sha256.txt
+        linux_x64: sha256:18fd13e77621f712326bfcf79c3e3cc08c880e3e4b8f63a1e5da619f3054b063
+        # https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u312-b07/OpenJDK8U-jre_x64_windows_hotspot_8u312b07.zip.sha256.txt
+        windows_x64: sha256:a4623365d70e7bc969e84b7f29b6b2eecb6c0686863ed67651506e2b5adf43b0
+        # https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u312-b07/OpenJDK8U-jre_x86-32_windows_hotspot_8u312b07.zip.sha256.txt
+        windows_x86-32: sha256:789cfa21858156084020ee885ade643556dc57ddec2b44745b5489edb7945b64
+        # https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u312-b07/OpenJDK8U-jre_aarch64_linux_hotspot_8u312b07.tar.gz.sha256.txt
+        linux_aarch64: sha256:961df2d520987c2252496fbee024f84c8c8c4d0be80e9fe043d221191666899e
+        # https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u312-b07/OpenJDK8U-jre_arm_linux_hotspot_8u312b07.tar.gz.sha256.txt
+        linux_arm: sha256:5f37cbf311a5c2928aff8e83a82aebcf37b5911b193b5ab8538108381dcd6276
+        # https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u312-b07/OpenJDK8U-jre_ppc64le_linux_hotspot_8u312b07.tar.gz.sha256.txt
+        linux_ppc64le: sha256:7914a2efcb7edb28df71b2d4e5194907163da06841a16f7c8c96d60677551f93
+        # https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u312-b07/OpenJDK8U-jre_x64_mac_hotspot_8u312b07.tar.gz.sha256.txt
+        mac_x64: sha256:c8cf94118bd073c3caf0cde2389993ef7f482b46daa7b6f6d680f90d6de1dd3d
+        # https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u312-b07/OpenJDK8U-jre_ppc64_aix_hotspot_8u312b07.tar.gz.sha256.txt
+        aix_ppc64: sha256:735c2afd5fc4573a2cd3f1629f1fbc6607849f95230a494560037fa40bdc9e03
+    '11.0.13_8':
+      jdk:
+        # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.13%2B8/OpenJDK11U-jdk_x64_alpine-linux_hotspot_11.0.13_8.tar.gz.sha256.txt
+        alpine-linux_x64: sha256:4216543c8eaa4b10475bbacb15bbda41e04ec5c8c57424b3303f60c36b8b362d
+        # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.13%2B8/OpenJDK11U-jdk_s390x_linux_hotspot_11.0.13_8.tar.gz.sha256.txt
+        linux_s390x: sha256:9d280d86fdf6a7d9e5cbf54dc37f1d6d09dfe676ff5c684802fdfa3932eee63e
+        # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.13%2B8/OpenJDK11U-jdk_x64_linux_hotspot_11.0.13_8.tar.gz.sha256.txt
+        linux_x64: sha256:3b1c0c34be4c894e64135a454f2d5aaa4bd10aea04ec2fa0c0efe6bb26528e30
+        # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.13%2B8/OpenJDK11U-jdk_x64_windows_hotspot_11.0.13_8.zip.sha256.txt
+        windows_x64: sha256:087d096032efe273d7e754a25c85d8e8cf44738a3e597ad86f55e0971acc3b8e
+        # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.13%2B8/OpenJDK11U-jdk_x86-32_windows_hotspot_11.0.13_8.zip.sha256.txt
+        windows_x86-32: sha256:40a6805672064b2af62cb4bcacce400caba40e39499015e2ed3e24ba8f9dddcb
+        # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.13%2B8/OpenJDK11U-jdk_aarch64_linux_hotspot_11.0.13_8.tar.gz.sha256.txt
+        linux_aarch64: sha256:a77013bff10a5e9c59159231dd5c4bd071fc4c24beed42bd49b82803ba9506ef
+        # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.13%2B8/OpenJDK11U-jdk_arm_linux_hotspot_11.0.13_8.tar.gz.sha256.txt
+        linux_arm: sha256:61ee45c4ef21a85a116a87e1bca2e2a420b3af432be8d801bd52c660ffebaa9f
+        # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.13%2B8/OpenJDK11U-jdk_ppc64le_linux_hotspot_11.0.13_8.tar.gz.sha256.txt
+        linux_ppc64le: sha256:82f14cda71cff99c878bf8400598a87235adb6c81b0337f7077c27e5cac1190c
+        # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.13%2B8/OpenJDK11U-jdk_x64_mac_hotspot_11.0.13_8.tar.gz.sha256.txt
+        mac_x64: sha256:2b862f97b872e37f8c7ad6d3d30f7d0fcb3f0b951740c8fa142dea702945973c
+        # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.13%2B8/OpenJDK11U-jdk_ppc64_aix_hotspot_11.0.13_8.tar.gz.sha256.txt
+        aix_ppc64: sha256:07ffe6ffccf183196253af396cbf35fc8b52dc30512afa40aea5f9a9c135c09e
+      jre:
+        # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.13%2B8/OpenJDK11U-jre_x64_alpine-linux_hotspot_11.0.13_8.tar.gz.sha256.txt
+        alpine-linux_x64: sha256:c7f56c8c4a5d115e13c9b595384029441008786427e7a85f91004134520f46d2
+        # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.13%2B8/OpenJDK11U-jre_s390x_linux_hotspot_11.0.13_8.tar.gz.sha256.txt
+        linux_s390x: sha256:b4a5af4ffcc98f6b7cdd2232f79aa12f20efa769b5255277fa4974e2e19d4409
+        # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.13%2B8/OpenJDK11U-jre_x64_linux_hotspot_11.0.13_8.tar.gz.sha256.txt
+        linux_x64: sha256:fb0a27e6e1f26a1ee79daa92e4cfe3ec0d676acfe114d99dd84b3414f056e8a0
+        # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.13%2B8/OpenJDK11U-jre_x64_windows_hotspot_11.0.13_8.zip.sha256.txt
+        windows_x64: sha256:7b0c07a068506b8539408cfe60e3120f54610af463a2dbd3b2ca42b572dd567e
+        # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.13%2B8/OpenJDK11U-jre_x86-32_windows_hotspot_11.0.13_8.zip.sha256.txt
+        windows_x86-32: sha256:60ed46fd2072d2ab25333a367b0ed58f8cf6441b877628f2324273a6b5c71222
+        # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.13%2B8/OpenJDK11U-jre_aarch64_linux_hotspot_11.0.13_8.tar.gz.sha256.txt
+        linux_aarch64: sha256:76f7da05d905b5f9de8de1a34c1a206744f7589bf0eed876cd9069cb1d913806
+        # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.13%2B8/OpenJDK11U-jre_arm_linux_hotspot_11.0.13_8.tar.gz.sha256.txt
+        linux_arm: sha256:aee2f20d005b58e79c3c6c02271f797cb387d33a135b762886990b9bf7cb262e
+        # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.13%2B8/OpenJDK11U-jre_ppc64le_linux_hotspot_11.0.13_8.tar.gz.sha256.txt
+        linux_ppc64le: sha256:8f267876675dac3da3f4ceccd44d812b57098505eeec5fb1688d54bdeffcd1da
+        # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.13%2B8/OpenJDK11U-jre_x64_mac_hotspot_11.0.13_8.tar.gz.sha256.txt
+        mac_x64: sha256:b175876c6f940ff3c8e1053a668516d2987cd6b3c5661dcc7ad8787379846d15
+        # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.13%2B8/OpenJDK11U-jre_ppc64_aix_hotspot_11.0.13_8.tar.gz.sha256.txt
+        aix_ppc64: sha256:d64e8572de3002ee0f1edd8f7bc67dd2ba5e599a54043c346a8632339ba6e54c
+    '17.0.1_12':
+      jdk:
+        # https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.1%2B12/OpenJDK17U-jdk_x64_alpine-linux_hotspot_17.0.1_12.tar.gz.sha256.txt
+        alpine-linux_x64: sha256:da4845987b3348da14338a0620ef7db25870e27670e82baebcc367fa9d17c7de
+        # https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.1%2B12/OpenJDK17U-jdk_s390x_linux_hotspot_17.0.1_12.tar.gz.sha256.txt
+        linux_s390x: sha256:dcc17e6ef28984656e997b6b8a6a31c89f45aff87a56b5d3819137c8f1050bef
+        # https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.1%2B12/OpenJDK17U-jdk_x64_linux_hotspot_17.0.1_12.tar.gz.sha256.txt
+        linux_x64: sha256:6ea18c276dcbb8522feeebcfc3a4b5cb7c7e7368ba8590d3326c6c3efc5448b6
+        # https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.1%2B12/OpenJDK17U-jdk_x64_windows_hotspot_17.0.1_12.zip.sha256.txt
+        windows_x64: sha256:e5419773052ac6479ff211d5945f8625e0cdb036e69c0f71affaf02d5dc9aa0b
+        # https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.1%2B12/OpenJDK17U-jdk_x86-32_windows_hotspot_17.0.1_12.zip.sha256.txt
+        windows_x86-32: sha256:604919b02caa5506e8c68888d6410384234e9a9fb0dbc6a0d97eb7652da4cf66
+        # https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.1%2B12/OpenJDK17U-jdk_aarch64_linux_hotspot_17.0.1_12.tar.gz.sha256.txt
+        linux_aarch64: sha256:f23d482b2b4ada08166201d1a0e299e3e371fdca5cd7288dcbd81ae82f3a75e3
+        # https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.1%2B12/OpenJDK17U-jdk_arm_linux_hotspot_17.0.1_12.tar.gz.sha256.txt
+        linux_arm: sha256:f5945a39929384235e7cb1c57df071b8c7e49274632e2a54e54b2bad05de21a5
+        # https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.1%2B12/OpenJDK17U-jdk_ppc64le_linux_hotspot_17.0.1_12.tar.gz.sha256.txt
+        linux_ppc64le: sha256:bd65d4e8ecc4236924ae34d2075b956799abca594021e1b40c36aa08a0d610b0
+        # https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.1%2B12/OpenJDK17U-jdk_x64_mac_hotspot_17.0.1_12.tar.gz.sha256.txt
+        mac_x64: sha256:98a759944a256dbdd4d1113459c7638501f4599a73d06549ac309e1982e2fa70
+        # https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.1%2B12/OpenJDK17U-jdk_aarch64_mac_hotspot_17.0.1_12.tar.gz.sha256.txt
+        mac_aarch64: sha256:02073590da24421e119ddebe6b061bf132fa68694c60706f092d32d963822554
+      jre:
+        # https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.1%2B12/OpenJDK17U-jre_x64_alpine-linux_hotspot_17.0.1_12.tar.gz.sha256.txt
+        alpine-linux_x64: sha256:804b8c62e8498c1c4375f6099de0e4c804b3565e9859f38647d29eca0b527955
+        # https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.1%2B12/OpenJDK17U-jre_s390x_linux_hotspot_17.0.1_12.tar.gz.sha256.txt
+        linux_s390x: sha256:ff88a8bcdaa8db788b463b14724460f68c4c70c80b86e556012521996281f4bf
+        # https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.1%2B12/OpenJDK17U-jre_x64_linux_hotspot_17.0.1_12.tar.gz.sha256.txt
+        linux_x64: sha256:9d58cb741509a88e0ae33eb022334fb900b409b198eca6fe76246f0677b392ad
+        # https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.1%2B12/OpenJDK17U-jre_x64_windows_hotspot_17.0.1_12.zip.sha256.txt
+        windows_x64: sha256:14e36001bddb80379afb993e54366385e4d9a9daaee1117bf857f3840c53ddbc
+        # https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.1%2B12/OpenJDK17U-jre_x86-32_windows_hotspot_17.0.1_12.zip.sha256.txt
+        windows_x86-32: sha256:f4bb1323cb34cdb42b92d825fe36fddd78b274f071b8971c5207a66a0e82748a
+        # https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.1%2B12/OpenJDK17U-jre_aarch64_linux_hotspot_17.0.1_12.tar.gz.sha256.txt
+        linux_aarch64: sha256:851205c5036543cbcf1953c3f5768977b9efaf6b86c9fb5ec1b6cab01f781faf
+        # https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.1%2B12/OpenJDK17U-jre_arm_linux_hotspot_17.0.1_12.tar.gz.sha256.txt
+        linux_arm: sha256:e1d94e98c47f2530304eb187c74a3e3c1cf46ddb4d86c277edb1e499bb525fe1
+        # https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.1%2B12/OpenJDK17U-jre_ppc64le_linux_hotspot_17.0.1_12.tar.gz.sha256.txt
+        linux_ppc64le: sha256:0e9eee4977e14edc14d0e2acb97cb413f4a769e2d855d02131af1ccd877779ff
+        # https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.1%2B12/OpenJDK17U-jre_x64_mac_hotspot_17.0.1_12.tar.gz.sha256.txt
+        mac_x64: sha256:d7eefa08d893d1ae263dc4ba427baa67b3cb9d48e1151654e423007fb2801358
+        # https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.1%2B12/OpenJDK17U-jre_aarch64_mac_hotspot_17.0.1_12.tar.gz.sha256.txt
+        mac_aarch64: sha256:3c4c249f5410f4afe9c80abfb0a370a986c8a4d09f10956542f7dae6e90915b1

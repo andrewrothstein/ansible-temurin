@@ -1,0 +1,69 @@
+---
+- name: resolve platform specific vars
+  include_vars: '{{ item }}'
+  with_first_found:
+    - files:
+        - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
+      skip: true
+      paths:
+        - '{{ role_path }}/vars'
+- name: mkdir {{ temurin_install_dir }}
+  become: true
+  become_user: root
+  file:
+    path: '{{ temurin_install_dir }}'
+    state: directory
+    mode: 0755
+- name: looking for existing installation at {{ temurin_install_subdir }}
+  become: true
+  become_user: root
+  stat:
+    path: '{{ temurin_install_subdir }}'
+  changed_when: false
+  register: temurin_binary
+- when: not temurin_binary.stat.exists
+  block:
+    - name: downloading {{ temurin_archive_url }} to {{ temurin_tmp_archive }}
+      become: true
+      become_user: root
+      get_url:
+        url: '{{ temurin_archive_url }}'
+        dest: '{{ temurin_tmp_archive }}'
+        checksum: '{{ temurin_checksum }}'
+        mode: 0644
+    - name: unarchiving {{ temurin_tmp_archive }} into {{ temurin_install_dir }} creating {{ temurin_install_subdir }}
+      become: true
+      become_user: root
+      unarchive:
+        remote_src: true
+        src: '{{ temurin_tmp_archive }}'
+        dest: '{{ temurin_install_dir }}'
+        creates: '{{ temurin_install_subdir }}'
+  always:
+    - name: rm {{ temurin_tmp_archive }}
+      become: true
+      become_user: root
+      file:
+        path: '{{ temurin_tmp_archive }}'
+        state: absent
+- name: linking {{ temurin_install_link }} to {{ temurin_install_subdir }}
+  become: true
+  become_user: root
+  file:
+    src: '{{ temurin_install_subdir }}'
+    dest: '{{ temurin_install_link }}'
+    state: link
+- name: adding openjdk to default path and easing systemd integration
+  become: true
+  become_user: root
+  with_items:
+    - f: openjdk.sh
+      d: /etc/profile.d
+    - f: openjdk.env
+      d: '{{ temurin_install_subdir }}'
+  template:
+    src: '{{ item.f }}.j2'
+    dest: '{{ item.d }}/{{ item.f }}'
+    mode: '{{ item.m | default("0644") }}'
