@@ -26,8 +26,8 @@ Example Playbook
 ```yml
 - hosts: servers
   vars:
-    termurin_app: jre
-    temurin_ver:
+    openjdk_app: jre
+    openjdk_ver:
       major: 17
       minor: 0
       patch: 1
