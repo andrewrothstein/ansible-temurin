@@ -2,12 +2,12 @@
 - hosts: all
   roles:
     - role: '{{ playbook_dir }}'
-      temurin_app: jre
+      openjdk_app: jre
   tasks:
     - import_tasks: test-jre-exe.yml
 - hosts: all
   roles:
     - role: '{{ playbook_dir }}'
-      temurin_app: jdk
+      openjdk_app: jdk
   tasks:
     - import_tasks: test-jdk-exe.yml
