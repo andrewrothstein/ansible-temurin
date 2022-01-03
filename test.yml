@@ -1,13 +1,13 @@
 ---
 - import_playbook: test-ver.yml
   vars:
-    temurin_ver:
+    openjdk_ver:
       major: 8
       minor: 312
       b: '07'
 - import_playbook: test-ver.yml
   vars:
-    temurin_ver:
+    openjdk_ver:
       major: 11
       minor: 0
       patch: 13

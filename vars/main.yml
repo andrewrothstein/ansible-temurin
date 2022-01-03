@@ -1,19 +1,19 @@
 ---
 # vars file for temurin
-temurin_ver_str: '{% if temurin_ver.major | int > 8 %}{{ temurin_ver.major }}.{{ temurin_ver.minor }}.{{ temurin_ver.patch }}_{{ temurin_ver.b }}{% else %}{{ temurin_ver.major }}u{{ temurin_ver.minor }}b{{ temurin_ver.b }}{% endif %}'
+temurin_ver_str: '{% if openjdk_ver.major | int > 8 %}{{ openjdk_ver.major }}.{{ openjdk_ver.minor }}.{{ openjdk_ver.patch }}_{{ openjdk_ver.b }}{% else %}{{ openjdk_ver.major }}u{{ openjdk_ver.minor }}b{{ openjdk_ver.b }}{% endif %}'
 
-temurin_last_rpath: jdk{% if temurin_ver.major | int > 8 %}-{{ temurin_ver.major }}.{{ temurin_ver.minor }}.{{ temurin_ver.patch }}%2B{{ temurin_ver.b }}{% else %}{{ temurin_ver.major }}u{{ temurin_ver.minor }}-b{{ temurin_ver.b }}{% endif %}
+temurin_last_rpath: jdk{% if openjdk_ver.major | int > 8 %}-{{ openjdk_ver.major }}.{{ openjdk_ver.minor }}.{{ openjdk_ver.patch }}%2B{{ openjdk_ver.b }}{% else %}{{ openjdk_ver.major }}u{{ openjdk_ver.minor }}-b{{ openjdk_ver.b }}{% endif %}
 
-temurin_rpath: temurin{{ temurin_ver.major }}-binaries/releases/download/{{ temurin_last_rpath }}
+temurin_rpath: temurin{{ openjdk_ver.major }}-binaries/releases/download/{{ temurin_last_rpath }}
 
-temurin_archive: OpenJDK{{ temurin_ver.major}}U-{{ temurin_app }}_{{ temurin_arch }}_{{ temurin_os }}_hotspot_{{ temurin_ver_str }}.{{ temurin_archive_type | default("tar.gz") }}
+temurin_archive: OpenJDK{{ openjdk_ver.major}}U-{{ openjdk_app }}_{{ temurin_arch }}_{{ temurin_os }}_hotspot_{{ temurin_ver_str }}.{{ temurin_archive_type | default("tar.gz") }}
 temurin_tmp_archive: /tmp/{{ temurin_archive }}
 
 temurin_platform: '{{ temurin_os }}_{{ temurin_arch }}'
-temurin_checksum: '{{ temurin_checksums[temurin_ver_str][temurin_app][temurin_platform] }}'
+temurin_checksum: '{{ temurin_checksums[temurin_ver_str][openjdk_app][temurin_platform] }}'
 temurin_archive_url: '{{ temurin_mirror}}/{{ temurin_rpath }}/{{ temurin_archive }}'
 
 temurin_install_dir: '{{ temurin_parent_install_dir }}/openjdk'
-temurin_install_subdir: '{{ temurin_install_dir }}/jdk{% if temurin_ver.major | int > 8 %}-{{ temurin_ver.major }}.{{ temurin_ver.minor }}.{{ temurin_ver.patch }}+{{ temurin_ver.b }}{% else %}{{ temurin_ver.major }}u{{ temurin_ver.minor }}-b{{ temurin_ver.b }}{% endif %}{% if temurin_app == "jre" %}-jre{% endif %}'
+temurin_install_subdir: '{{ temurin_install_dir }}/jdk{% if openjdk_ver.major | int > 8 %}-{{ openjdk_ver.major }}.{{ openjdk_ver.minor }}.{{ openjdk_ver.patch }}+{{ openjdk_ver.b }}{% else %}{{ openjdk_ver.major }}u{{ openjdk_ver.minor }}-b{{ openjdk_ver.b }}{% endif %}{% if openjdk_app == "jre" %}-jre{% endif %}'
 
-temurin_install_link: '{{ temurin_parent_install_dir }}/openjdk-{{ temurin_app }}'
+temurin_install_link: '{{ temurin_parent_install_dir }}/openjdk-{{ openjdk_app }}'
