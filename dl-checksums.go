@@ -68,7 +68,6 @@ func (s *Platform) FmtReverse() string {
 
 type Params struct {
 	Mirror string
-	Dir    string
 }
 
 func dl_url(url string) (string, error) {
