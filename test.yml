@@ -10,6 +10,6 @@
     openjdk_ver:
       major: 11
       minor: 0
-      patch: 13
-      b: 8
+      patch: '13'
+      b: '8'
 - import_playbook: test-ver.yml
