@@ -99,13 +99,22 @@ func dl_checksum(checksum_url string, f string) (string, error) {
 	return "", err
 }
 
+func indent(i uint64) string {
+	var b strings.Builder
+	for j := uint64(0); j < i; j++ {
+		fmt.Fprintf(&b, "  ")
+	}
+	return b.String()
+}
+
 func dl_app(
+	i uint64,
 	params *Params,
 	app string,
 	v *Ver,
 	platforms []Platform,
 ) {
-	fmt.Printf("      %s:\n", app)
+	fmt.Printf("%s%s:\n", indent(i), app)
 	for _, p := range platforms {
 		file := fmt.Sprintf(
 			"OpenJDK%dU-%s_%s_hotspot_%s.%s",
@@ -116,21 +125,22 @@ func dl_app(
 			params.Mirror, v.RPath(), file,
 		)
 		if checksum, err := dl_checksum(checksumsurl, file); err == nil {
-			fmt.Printf("        # %s\n", checksumsurl)
-			fmt.Printf("        %s: sha256:%s\n", p.Fmt(), checksum)
+			fmt.Printf("%s# %s\n", indent(i+1), checksumsurl)
+			fmt.Printf("%s%s: sha256:%s\n", indent(i+1), p.Fmt(), checksum)
 		}
 	}
 }
 
 func dlall(
+	i uint64,
 	params *Params,
 	vs []Ver,
 	platforms []Platform,
 ) {
 	for _, v := range vs {
-		fmt.Printf("    '%s':\n", v.Fmt())
-		dl_app(params, "jdk", &v, platforms)
-		dl_app(params, "jre", &v, platforms)
+		fmt.Printf("%s'%s':\n", indent(i), v.Fmt())
+		dl_app(i+1, params, "jdk", &v, platforms)
+		dl_app(i+1, params, "jre", &v, platforms)
 	}
 }
 
@@ -162,5 +172,5 @@ func main() {
 		{Major: 17, Minor: 0, Patch: "1", BVer: "12"},
 		{Major: 17, Minor: 0, Patch: "2", BVer: "8"},
 	}
-	dlall(&params, versions, platforms)
+	dlall(1, &params, versions, platforms)
 }
