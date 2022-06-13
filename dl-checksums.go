@@ -166,6 +166,7 @@ func main() {
 	fmt.Println("---")
 	fmt.Println("temurin_checksums:")
 
+	// https://adoptium.net/temurin/releases/
 	versions := []Ver{
 		{Major: 8, Minor: 312, Patch: "0", BVer: "07"},
 		{Major: 8, Minor: 322, Patch: "0", BVer: "06"},
