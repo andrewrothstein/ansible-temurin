@@ -163,6 +163,9 @@ func main() {
 		NewZipPlatform("windows", "x86-32"),
 	}
 
+	fmt.Println("---")
+	fmt.Println("temurin_checksums:")
+
 	versions := []Ver{
 		{Major: 8, Minor: 312, Patch: "0", BVer: "07"},
 		{Major: 8, Minor: 322, Patch: "0", BVer: "06"},
