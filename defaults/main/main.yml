@@ -1,0 +1,14 @@
+---
+# defaults file for temurin
+openjdk_app: jre
+openjdk_ver:
+  major: 17
+  minor: 0
+  patch: "3"
+  b: "7"
+
+temurin_os: linux
+temurin_arch: x64
+
+temurin_parent_install_dir: /usr/local
+temurin_mirror: https://github.com/adoptium
