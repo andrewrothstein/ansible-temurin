@@ -13,3 +13,10 @@
       patch: '15'
       b: '10'
 - import_playbook: test-ver.yml
+  vars:
+    openjdk_ver:
+      major: 17
+      minor: 0
+      patch: '3'
+      b: '7'
+- import_playbook: test-ver.yml
