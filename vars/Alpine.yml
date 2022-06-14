@@ -1,2 +1,2 @@
 ---
-temurin_os: '{% if openjdk_ver.major | int > 8 %}alpine-linux{% else %}linux{% endif %}'
+temurin_os: alpine-linux
