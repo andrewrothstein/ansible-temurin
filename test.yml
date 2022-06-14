@@ -3,8 +3,8 @@
   vars:
     openjdk_ver:
       major: 8
-      minor: 322
-      b: '06'
+      minor: 332
+      b: '09'
 - import_playbook: test-ver.yml
   vars:
     openjdk_ver:
