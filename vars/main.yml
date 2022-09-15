@@ -17,3 +17,6 @@ temurin_install_dir: '{{ temurin_parent_install_dir }}/openjdk'
 temurin_install_subdir: '{{ temurin_install_dir }}/jdk{% if openjdk_ver.major | int > 8 %}-{{ openjdk_ver.major }}.{{ openjdk_ver.minor }}.{{ openjdk_ver.patch }}+{{ openjdk_ver.b }}{% else %}{{ openjdk_ver.major }}u{{ openjdk_ver.minor }}-b{{ openjdk_ver.b }}{% endif %}{% if openjdk_app == "jre" %}-jre{% endif %}'
 
 temurin_install_link: '{{ temurin_parent_install_dir }}/openjdk-{{ openjdk_app }}'
+temurin_keytool_exe: '{{ temurin_install_subdir }}/bin/keytool'
+
+temurin_keystore: '{{ temurin_install_subdir }}{% if openjdk_ver.major | int <= 8 and openjdk_app == "jdk" %}/jre{% endif %}/lib/security/cacerts'

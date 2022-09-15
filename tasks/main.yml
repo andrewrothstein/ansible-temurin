@@ -69,3 +69,16 @@
     src: '{{ item.f }}.j2'
     dest: '{{ item.d }}/{{ item.f }}'
     mode: '{{ item.m | default("0644") }}'
+- name: adding certs to the keystore at {{ temurin_keystore }} with {{ temurin_keytool_exe }}
+  become: true
+  become_user: root
+  loop: '{{ temurin_certs | default([]) }}'
+  command: |
+    {{ temurin_keytool_exe }}
+    -import
+    -trustcacerts
+    -keystore {{ temurin_keystore }}
+    -alias {{ item.alias }}
+    -storepass {{ item.storepass | default("changeit") }}
+    -file {{ item.file | default("/etc/ssl/certs/" + item.alias + ".pem") }}
+    -noprompt
