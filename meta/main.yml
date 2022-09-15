@@ -33,6 +33,3 @@ galaxy_info:
   galaxy_tags:
     - development
   role_name: temurin
-
-dependencies:
-  - andrewrothstein.unarchive-deps
