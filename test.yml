@@ -6,7 +6,8 @@
       minor: 342
       b: '07'
     temurin_certs:
-      - alias: Entrust_Root_Certification_Authority
+      - alias: my-private-ca
+        file: '{{ playbook_dir }}/my-private-ca.pem'
 - import_playbook: test-ver.yml
   vars:
     openjdk_ver:
@@ -15,7 +16,8 @@
       patch: '16'
       b: '8'
     temurin_certs:
-      - alias: Entrust_Root_Certification_Authority
+      - alias: my-private-ca
+        file: '{{ playbook_dir }}/my-private-ca.pem'
 - import_playbook: test-ver.yml
   vars:
     openjdk_ver:
@@ -24,8 +26,10 @@
       patch: '4'
       b: '8'
     temurin_certs:
-      - alias: Entrust_Root_Certification_Authority
+      - alias: my-private-ca
+        file: '{{ playbook_dir }}/my-private-ca.pem'
 - import_playbook: test-ver.yml
   vars:
     temurin_certs:
-      - alias: Entrust_Root_Certification_Authority
+      - alias: my-private-ca
+        file: '{{ playbook_dir }}/my-private-ca.pem'
