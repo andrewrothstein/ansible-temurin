@@ -80,5 +80,5 @@
     -keystore {{ temurin_keystore }}
     -alias {{ item.alias }}
     -storepass {{ item.storepass | default("changeit") }}
-    -file {{ item.file | default("/etc/ssl/certs/" + item.alias + ".pem") }}
+    -file {{ item.file | default(temurin_cacert_default_prefix + item.alias + ".pem") }}
     -noprompt

@@ -1,2 +1,3 @@
 ---
 temurin_os: alpine-linux
+temurin_cacert_default_prefix: /etc/ssl/certs/ca-cert-

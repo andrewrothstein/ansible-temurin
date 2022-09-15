@@ -20,3 +20,4 @@ temurin_install_link: '{{ temurin_parent_install_dir }}/openjdk-{{ openjdk_app }
 temurin_keytool_exe: '{{ temurin_install_subdir }}/bin/keytool'
 
 temurin_keystore: '{{ temurin_install_subdir }}{% if openjdk_ver.major | int <= 8 and openjdk_app == "jdk" %}/jre{% endif %}/lib/security/cacerts'
+temurin_cacert_default_prefix: /etc/ssl/certs/
