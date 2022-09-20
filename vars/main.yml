@@ -1,5 +1,7 @@
 ---
 # vars file for temurin
+temurin_os: '{{ temurin_os_prefix | default("") }}{{ ansible_system | lower }}'
+temurin_arch: '{{ temurin_arch_map[ansible_architecture] }}'
 temurin_ver_str: '{% if openjdk_ver.major | int > 8 %}{{ openjdk_ver.major }}.{{ openjdk_ver.minor }}.{{ openjdk_ver.patch }}_{{ openjdk_ver.b }}{% else %}{{ openjdk_ver.major }}u{{ openjdk_ver.minor }}b{{ openjdk_ver.b }}{% endif %}'
 
 temurin_last_rpath: jdk{% if openjdk_ver.major | int > 8 %}-{{ openjdk_ver.major }}.{{ openjdk_ver.minor }}.{{ openjdk_ver.patch }}%2B{{ openjdk_ver.b }}{% else %}{{ openjdk_ver.major }}u{{ openjdk_ver.minor }}-b{{ openjdk_ver.b }}{% endif %}
