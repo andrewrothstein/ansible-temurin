@@ -4,12 +4,13 @@ openjdk_app: jre
 openjdk_ver:
   major: 18
   minor: 0
-  patch: "1"
-  b: "10"
+  patch: "2.1"
+  b: "1"
 
 temurin_arch_map:
   386: x32
   aarch64: arm64
+  arm64: arm64
   ppc64le: ppc64le
   x86_64: x64
 
