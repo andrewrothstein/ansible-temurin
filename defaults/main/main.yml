@@ -2,10 +2,10 @@
 # defaults file for temurin
 openjdk_app: jre
 openjdk_ver:
-  major: 18
+  major: 19
   minor: 0
-  patch: "2.1"
-  b: "1"
+  patch: "1"
+  b: "10"
 
 temurin_arch_map:
   386: x32
