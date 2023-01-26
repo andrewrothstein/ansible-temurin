@@ -4,8 +4,8 @@ openjdk_app: jre
 openjdk_ver:
   major: 19
   minor: 0
-  patch: "1"
-  b: "10"
+  patch: "2"
+  b: "7"
 
 temurin_arch_map:
   386: x32
