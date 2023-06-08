@@ -3,8 +3,8 @@
   vars:
     openjdk_ver:
       major: 8
-      minor: 362
-      b: '09'
+      minor: 372
+      b: '07'
     temurin_certs:
       - alias: my-private-ca
         file: '{{ playbook_dir }}/my-private-ca.pem'
@@ -13,8 +13,8 @@
     openjdk_ver:
       major: 11
       minor: 0
-      patch: '18'
-      b: '10'
+      patch: '19'
+      b: '7'
     temurin_certs:
       - alias: my-private-ca
         file: '{{ playbook_dir }}/my-private-ca.pem'
@@ -23,8 +23,28 @@
     openjdk_ver:
       major: 17
       minor: 0
-      patch: '6'
-      b: '10'
+      patch: '7'
+      b: '7'
+    temurin_certs:
+      - alias: my-private-ca
+        file: '{{ playbook_dir }}/my-private-ca.pem'
+- import_playbook: test-ver.yml
+  vars:
+    openjdk_ver:
+      major: 18
+      minor: 0
+      patch: '2.1'
+      b: '1'
+    temurin_certs:
+      - alias: my-private-ca
+        file: '{{ playbook_dir }}/my-private-ca.pem'
+- import_playbook: test-ver.yml
+  vars:
+    openjdk_ver:
+      major: 19
+      minor: 0
+      patch: '2'
+      b: '7'
     temurin_certs:
       - alias: my-private-ca
         file: '{{ playbook_dir }}/my-private-ca.pem'

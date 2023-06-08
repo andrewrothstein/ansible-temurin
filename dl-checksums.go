@@ -175,6 +175,7 @@ func main() {
 		{Major: 8, Minor: 345, Patch: "0", BVer: "01"},
 		{Major: 8, Minor: 352, Patch: "0", BVer: "08"},
 		{Major: 8, Minor: 362, Patch: "0", BVer: "09"},
+		{Major: 8, Minor: 372, Patch: "0", BVer: "07"},
 		{Major: 11, Minor: 0, Patch: "13", BVer: "8"},
 		{Major: 11, Minor: 0, Patch: "14.1", BVer: "1"},
 		{Major: 11, Minor: 0, Patch: "15", BVer: "10"},
@@ -197,6 +198,7 @@ func main() {
 		{Major: 18, Minor: 0, Patch: "2.1", BVer: "1"},
 		{Major: 19, Minor: 0, Patch: "1", BVer: "10"},
 		{Major: 19, Minor: 0, Patch: "2", BVer: "7"},
+		{Major: 20, Minor: 0, Patch: "1", BVer: "9"},
 	}
 	dlall(1, &params, versions, platforms)
 }
