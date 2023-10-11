@@ -16,3 +16,5 @@ temurin_arch_map:
 
 temurin_parent_install_dir: /usr/local
 temurin_mirror: https://github.com/adoptium
+
+# temurin_timeout_seconds: 600

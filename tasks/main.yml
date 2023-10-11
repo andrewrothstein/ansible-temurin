@@ -35,6 +35,7 @@
         dest: '{{ temurin_tmp_archive }}'
         checksum: '{{ temurin_checksum }}'
         mode: 0644
+        timeout: '{{ temurin_timeout_seconds | default(600) }}'
     - name: unarchiving {{ temurin_tmp_archive }} into {{ temurin_install_dir }} creating {{ temurin_install_subdir }}
       become: true
       become_user: root
