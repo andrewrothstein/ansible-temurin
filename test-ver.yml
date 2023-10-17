@@ -3,11 +3,17 @@
   roles:
     - role: '{{ playbook_dir }}'
       openjdk_app: jre
+      temurin_certs:
+        - alias: my-private-ca
+          file: '{{ playbook_dir }}/my-private-ca.pem'
   tasks:
     - import_tasks: test-jre-exe.yml
 - hosts: all
   roles:
     - role: '{{ playbook_dir }}'
       openjdk_app: jdk
+      temurin_certs:
+        - alias: my-private-ca
+          file: '{{ playbook_dir }}/my-private-ca.pem'
   tasks:
     - import_tasks: test-jdk-exe.yml

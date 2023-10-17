@@ -711,6 +711,8 @@ temurin_checksums:
     jdk:
       # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20.1%2B1/OpenJDK11U-jdk_x64_alpine-linux_hotspot_11.0.20.1_1.tar.gz.sha256.txt
       alpine-linux_x64: sha256:1a94e642bf6cc4124d4f01f43184f9127ef994cbd324e2ee42cc50f715cbaedf
+      # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20.1%2B1/OpenJDK11U-jdk_s390x_linux_hotspot_11.0.20.1_1.tar.gz.sha256.txt
+      linux_s390x: sha256:a7efbe804a4616d38b6ac0def40cd9feacc04aee2bb89132191f4d33fc0a7c1e
       # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20.1%2B1/OpenJDK11U-jdk_x64_linux_hotspot_11.0.20.1_1.tar.gz.sha256.txt
       linux_x64: sha256:398a64bff002f0e3b0c01ecd24a1a32c83cb72a5255344219e9757d4ddd9f857
       # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20.1%2B1/OpenJDK11U-jdk_aarch64_linux_hotspot_11.0.20.1_1.tar.gz.sha256.txt
@@ -719,6 +721,10 @@ temurin_checksums:
       linux_arm: sha256:e83674aee238ebb5f359b9395b3c5e3fad5b645846095494662802d2f0fd01c9
       # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20.1%2B1/OpenJDK11U-jdk_ppc64le_linux_hotspot_11.0.20.1_1.tar.gz.sha256.txt
       linux_ppc64le: sha256:b806f4bb526161bf9b2ffb37be4e1b77f56b4e726dc4d52c7902130a79e7d710
+      # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20.1%2B1/OpenJDK11U-jdk_aarch64_mac_hotspot_11.0.20.1_1.tar.gz.sha256.txt
+      mac_aarch64: sha256:d36abd2f8a8cd2c73a7893306d65a5ae03eaa73565c1fc197a69d1d6fb02405e
+      # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20.1%2B1/OpenJDK11U-jdk_x64_mac_hotspot_11.0.20.1_1.tar.gz.sha256.txt
+      mac_x64: sha256:42fd1373ee3f7c24f13551be20c8a5ae7ade778f83c45476ea333b2e3e025267
       # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20.1%2B1/OpenJDK11U-jdk_x64_windows_hotspot_11.0.20.1_1.zip.sha256.txt
       windows_x64: sha256:5042f5ed28f84faf545eba6bb9ce59288fb9c85c0de8d30803e9fc1a88d533c4
       # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20.1%2B1/OpenJDK11U-jdk_x86-32_windows_hotspot_11.0.20.1_1.zip.sha256.txt
@@ -726,6 +732,8 @@ temurin_checksums:
     jre:
       # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20.1%2B1/OpenJDK11U-jre_x64_alpine-linux_hotspot_11.0.20.1_1.tar.gz.sha256.txt
       alpine-linux_x64: sha256:d34ea3d1e3852548546c69d7d73addb873e7926e66147b8596b7c11fad9ee057
+      # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20.1%2B1/OpenJDK11U-jre_s390x_linux_hotspot_11.0.20.1_1.tar.gz.sha256.txt
+      linux_s390x: sha256:cf7fa0f0291687ebcb5f87f5db3a8d94525fd65832adc636c4c6e1f3174d9997
       # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20.1%2B1/OpenJDK11U-jre_x64_linux_hotspot_11.0.20.1_1.tar.gz.sha256.txt
       linux_x64: sha256:bc6ed047e50b09611b419c878e4ea3ea36594bd79f64001a5b53decf72669d33
       # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20.1%2B1/OpenJDK11U-jre_aarch64_linux_hotspot_11.0.20.1_1.tar.gz.sha256.txt
@@ -734,6 +742,10 @@ temurin_checksums:
       linux_arm: sha256:2fc1cc935897312c0bc2515b2e7ea1fa3b267e77305a1b51a8c3917d92af380f
       # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20.1%2B1/OpenJDK11U-jre_ppc64le_linux_hotspot_11.0.20.1_1.tar.gz.sha256.txt
       linux_ppc64le: sha256:7963580e5c3abe55e6b9d2297f2e2cde7b227d28204497bec5f17bb37762c7b7
+      # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20.1%2B1/OpenJDK11U-jre_aarch64_mac_hotspot_11.0.20.1_1.tar.gz.sha256.txt
+      mac_aarch64: sha256:733e7efdb2f0557859c36f3f40762782f4946c123b8a4bea851175db3b24b2f0
+      # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20.1%2B1/OpenJDK11U-jre_x64_mac_hotspot_11.0.20.1_1.tar.gz.sha256.txt
+      mac_x64: sha256:c5a4003a579ea0633a4830bc5eae2f3aacf9990354bbac0393d1744e06907383
       # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20.1%2B1/OpenJDK11U-jre_x64_windows_hotspot_11.0.20.1_1.zip.sha256.txt
       windows_x64: sha256:89e610ed00f7b79ebf3d350a1076f485b614ede93c6591d1c90b2f0fe85ca01d
       # https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20.1%2B1/OpenJDK11U-jre_x86-32_windows_hotspot_11.0.20.1_1.zip.sha256.txt
@@ -1427,3 +1439,30 @@ temurin_checksums:
       mac_x64: sha256:565d62faac325c098670705fb26a5cc3d4af0a25e86444ddd643f779ad2a3417
       # https://github.com/adoptium/temurin20-binaries/releases/download/jdk-20.0.2%2B9/OpenJDK20U-jre_x64_windows_hotspot_20.0.2_9.zip.sha256.txt
       windows_x64: sha256:f7960fdd7ce4f0dcc48bb9c63448aadc714f11a0a09f668f87083264c55b933e
+  '21_35':
+    jdk:
+      # https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21%2B35/OpenJDK21U-jdk_x64_alpine-linux_hotspot_21_35.tar.gz.sha256.txt
+      alpine-linux_x64: sha256:4fd74f93f0b1a94d8471e0ed801fe9d938f7471f6efe8791880c85e7716c943f
+      # https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21%2B35/OpenJDK21U-jdk_x64_linux_hotspot_21_35.tar.gz.sha256.txt
+      linux_x64: sha256:82f64c53acaa045370d6762ebd7441b74e6fda14b464d54d1ff8ca941ec069e6
+      # https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21%2B35/OpenJDK21U-jdk_aarch64_linux_hotspot_21_35.tar.gz.sha256.txt
+      linux_aarch64: sha256:33e440c237438aa2e3866d84ead8d4e00dc0992d98d9fd0ee2fe48192f2dbc4b
+      # https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21%2B35/OpenJDK21U-jdk_aarch64_mac_hotspot_21_35.tar.gz.sha256.txt
+      mac_aarch64: sha256:107d1b16cda1da20d2f7aa45b1bfb8574bbfca2e15bb0ff720ce2678473b00d5
+      # https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21%2B35/OpenJDK21U-jdk_x64_mac_hotspot_21_35.tar.gz.sha256.txt
+      mac_x64: sha256:25f3d8c875255362a3e31a0783f9f0422de01f8e4b515c45bd68e43ef3812a9d
+      # https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21%2B35/OpenJDK21U-jdk_x64_windows_hotspot_21_35.zip.sha256.txt
+      windows_x64: sha256:653dc46f31dd0e8c5c13dfefe72754615dc0fdc123a03390e71e2cff2f1f17e1
+    jre:
+      # https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21%2B35/OpenJDK21U-jre_x64_alpine-linux_hotspot_21_35.tar.gz.sha256.txt
+      alpine-linux_x64: sha256:9e7aa5ca9d8819e8fb3ae9f3c146905bee81808b70b875de0984ec55b1bd8559
+      # https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21%2B35/OpenJDK21U-jre_x64_linux_hotspot_21_35.tar.gz.sha256.txt
+      linux_x64: sha256:080a53a3f75b94450779199f09c8d91b53637d315f128c58a4f160fb6272502d
+      # https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21%2B35/OpenJDK21U-jre_aarch64_linux_hotspot_21_35.tar.gz.sha256.txt
+      linux_aarch64: sha256:5a36cde2956749aaad502e1df6729072e5483265fce142230516261da9a391db
+      # https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21%2B35/OpenJDK21U-jre_aarch64_mac_hotspot_21_35.tar.gz.sha256.txt
+      mac_aarch64: sha256:884d183a903b79819a9744d0020822dc97bf327b0369568d345b400fad66936e
+      # https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21%2B35/OpenJDK21U-jre_x64_mac_hotspot_21_35.tar.gz.sha256.txt
+      mac_x64: sha256:a0193a92a73302aaa7641267d95fdf4ef53e964b750e71ee60a166cb488dda8d
+      # https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21%2B35/OpenJDK21U-jre_x64_windows_hotspot_21_35.zip.sha256.txt
+      windows_x64: sha256:3753e9b1d7186191766954f7957cc0c3c4de9633366dbfdfa573e30b371b7ab7

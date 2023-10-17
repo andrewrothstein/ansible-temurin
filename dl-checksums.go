@@ -8,6 +8,8 @@ import (
 	"strings"
 )
 
+// https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21%2B35/OpenJDK21U-jdk_aarch64_mac_hotspot_21_35.tar.gz
+
 type Ver struct {
 	Major int
 	Minor int
@@ -16,7 +18,9 @@ type Ver struct {
 }
 
 func (v *Ver) Fmt() string {
-	if v.Major >= 9 {
+	if v.Major >= 21 {
+		return fmt.Sprintf("%v_%v", v.Major, v.Minor)
+	} else if v.Major >= 9 {
 		return fmt.Sprintf("%v.%v.%v_%v", v.Major, v.Minor, v.Patch, v.BVer)
 	} else {
 		return fmt.Sprintf("%vu%vb%v", v.Major, v.Minor, v.BVer)
@@ -24,7 +28,12 @@ func (v *Ver) Fmt() string {
 }
 
 func (v *Ver) lastRPath() string {
-	if v.Major >= 9 {
+	if v.Major >= 21 {
+		return fmt.Sprintf(
+			"jdk-%v%%2B%v",
+			v.Major, v.Minor,
+		)
+	} else if v.Major >= 9 {
 		return fmt.Sprintf(
 			"jdk-%v.%v.%v%%2B%v",
 			v.Major, v.Minor, v.Patch, v.BVer,
@@ -203,6 +212,7 @@ func main() {
 		{Major: 19, Minor: 0, Patch: "2", BVer: "7"},
 		{Major: 20, Minor: 0, Patch: "1", BVer: "9"},
 		{Major: 20, Minor: 0, Patch: "2", BVer: "9"},
+		{Major: 21, Minor: 35},
 	}
 	dlall(1, &params, versions, platforms)
 }
