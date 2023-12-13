@@ -1,8 +1,9 @@
 ---
-- include_role:
+- name: install andrewrothstein.unarchivedeps
+  ansible.builtin.include_role:
     name: andrewrothstein.unarchivedeps
 - name: resolve platform specific vars
-  include_vars: '{{ item }}'
+  ansible.builtin.include_vars: '{{ item }}'
   with_first_found:
     - files:
         - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
@@ -14,14 +15,14 @@
 - name: mkdir {{ temurin_install_dir }}
   become: true
   become_user: root
-  file:
+  ansible.builtin.file:
     path: '{{ temurin_install_dir }}'
     state: directory
-    mode: 0755
+    mode: '755'
 - name: looking for existing installation at {{ temurin_install_subdir }}
   become: true
   become_user: root
-  stat:
+  ansible.builtin.stat:
     path: '{{ temurin_install_subdir }}'
   changed_when: false
   register: temurin_binary
@@ -30,7 +31,7 @@
     - name: downloading {{ temurin_archive_url }} to {{ temurin_tmp_archive }}
       become: true
       become_user: root
-      get_url:
+      ansible.builtin.get_url:
         url: '{{ temurin_archive_url }}'
         dest: '{{ temurin_tmp_archive }}'
         checksum: '{{ temurin_checksum }}'
@@ -39,7 +40,7 @@
     - name: unarchiving {{ temurin_tmp_archive }} into {{ temurin_install_dir }} creating {{ temurin_install_subdir }}
       become: true
       become_user: root
-      unarchive:
+      ansible.builtin.unarchive:
         remote_src: true
         src: '{{ temurin_tmp_archive }}'
         dest: '{{ temurin_install_dir }}'
@@ -48,13 +49,13 @@
     - name: rm {{ temurin_tmp_archive }}
       become: true
       become_user: root
-      file:
+      ansible.builtin.file:
         path: '{{ temurin_tmp_archive }}'
         state: absent
 - name: linking {{ temurin_install_link }} to {{ temurin_install_subdir }}
   become: true
   become_user: root
-  file:
+  ansible.builtin.file:
     src: '{{ temurin_install_subdir }}'
     dest: '{{ temurin_install_link }}'
     state: link
@@ -66,7 +67,7 @@
       d: /etc/profile.d
     - f: openjdk.env
       d: '{{ temurin_install_subdir }}'
-  template:
+  ansible.builtin.template:
     src: '{{ item.f }}.j2'
     dest: '{{ item.d }}/{{ item.f }}'
     mode: '{{ item.m | default("0644") }}'
@@ -74,7 +75,7 @@
   become: true
   become_user: root
   loop: '{{ temurin_certs | default([]) }}'
-  command: |
+  ansible.builtin.command: |
     {{ temurin_keytool_exe }}
     -import
     -trustcacerts
