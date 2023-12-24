@@ -8,7 +8,8 @@ import (
 	"strings"
 )
 
-// https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21%2B35/OpenJDK21U-jdk_aarch64_mac_hotspot_21_35.tar.gz
+// https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21%2B35/OpenJDK21U-jre_x64_linux_hotspot_21_35.tar.gz
+// https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.1%2B12/OpenJDK21U-jdk_x64_windows_hotspot_21.0.1_12.zip
 
 type Ver struct {
 	Major int
@@ -18,26 +19,35 @@ type Ver struct {
 }
 
 func (v *Ver) Fmt() string {
-	if v.Major >= 21 {
-		return fmt.Sprintf("%v_%v", v.Major, v.Minor)
-	} else if v.Major >= 9 {
-		return fmt.Sprintf("%v.%v.%v_%v", v.Major, v.Minor, v.Patch, v.BVer)
+	if v.Major >= 9 {
+		if v.Minor == 0 && v.Patch == "" {
+			// 21_35
+			return fmt.Sprintf("%v_%v", v.Major, v.BVer)
+		} else {
+			// 21.0.1_12
+			return fmt.Sprintf("%v.%v.%v_%v", v.Major, v.Minor, v.Patch, v.BVer)
+
+		}
 	} else {
 		return fmt.Sprintf("%vu%vb%v", v.Major, v.Minor, v.BVer)
 	}
 }
 
 func (v *Ver) lastRPath() string {
-	if v.Major >= 21 {
-		return fmt.Sprintf(
-			"jdk-%v%%2B%v",
-			v.Major, v.Minor,
-		)
-	} else if v.Major >= 9 {
-		return fmt.Sprintf(
-			"jdk-%v.%v.%v%%2B%v",
-			v.Major, v.Minor, v.Patch, v.BVer,
-		)
+	if v.Major >= 9 {
+		if v.Minor == 0 && v.Patch == ""  {
+			// jdk-21%2B35
+			return fmt.Sprintf(
+				"jdk-%v%%2B%v",
+				v.Major, v.BVer,
+			)
+		} else {
+			// jdk-21.0.1%2B12
+			return fmt.Sprintf(
+				"jdk-%v.%v.%v%%2B%v",
+				v.Major, v.Minor, v.Patch, v.BVer,
+			)
+		}
 	} else {
 		return fmt.Sprintf(
 			"jdk%vu%v-b%v",
@@ -186,6 +196,7 @@ func main() {
 		{Major: 8, Minor: 362, Patch: "0", BVer: "09"},
 		{Major: 8, Minor: 372, Patch: "0", BVer: "07"},
 		{Major: 8, Minor: 382, Patch: "0", BVer: "05"},
+		{Major: 8, Minor: 392, Patch: "0", BVer: "08"},
 		{Major: 11, Minor: 0, Patch: "13", BVer: "8"},
 		{Major: 11, Minor: 0, Patch: "14.1", BVer: "1"},
 		{Major: 11, Minor: 0, Patch: "15", BVer: "10"},
@@ -195,6 +206,7 @@ func main() {
 		{Major: 11, Minor: 0, Patch: "18", BVer: "10"},
 		{Major: 11, Minor: 0, Patch: "19", BVer: "7"},
 		{Major: 11, Minor: 0, Patch: "20.1", BVer: "1"},
+		{Major: 11, Minor: 0, Patch: "21", BVer: "9"},
 		{Major: 16, Minor: 0, Patch: "2", BVer: "7"},
 		{Major: 17, Minor: 0, Patch: "1", BVer: "12"},
 		{Major: 17, Minor: 0, Patch: "2", BVer: "8"},
@@ -205,6 +217,7 @@ func main() {
 		{Major: 17, Minor: 0, Patch: "6", BVer: "10"},
 		{Major: 17, Minor: 0, Patch: "7", BVer: "7"},
 		{Major: 17, Minor: 0, Patch: "8.1", BVer: "1"},
+		{Major: 17, Minor: 0, Patch: "9", BVer: "9"},
 		{Major: 18, Minor: 0, Patch: "1", BVer: "10"},
 		{Major: 18, Minor: 0, Patch: "2", BVer: "9"},
 		{Major: 18, Minor: 0, Patch: "2.1", BVer: "1"},
@@ -212,7 +225,8 @@ func main() {
 		{Major: 19, Minor: 0, Patch: "2", BVer: "7"},
 		{Major: 20, Minor: 0, Patch: "1", BVer: "9"},
 		{Major: 20, Minor: 0, Patch: "2", BVer: "9"},
-		{Major: 21, Minor: 35},
+		{Major: 21, Minor: 0, Patch: "", BVer: "35"},
+		{Major: 21, Minor: 0, Patch: "1", BVer: "12"},
 	}
 	dlall(1, &params, versions, platforms)
 }

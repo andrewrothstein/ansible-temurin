@@ -3,22 +3,22 @@
   vars:
     openjdk_ver:
       major: 8
-      minor: 382
-      b: '05'
+      minor: 392
+      b: '08'
 - import_playbook: test-ver.yml
   vars:
     openjdk_ver:
       major: 11
       minor: 0
-      patch: '20.1'
-      b: '1'
+      patch: '21'
+      b: '9'
 - import_playbook: test-ver.yml
   vars:
     openjdk_ver:
       major: 17
       minor: 0
-      patch: '8.1'
-      b: '1'
+      patch: '9'
+      b: '9'
 - import_playbook: test-ver.yml
   vars:
     openjdk_ver:
@@ -40,4 +40,9 @@
       minor: 0
       patch: "2"
       b: "9"
+- import_playbook: test-ver.yml
+  vars:
+    openjdk_ver:
+      major: 21
+      b: "35"
 - import_playbook: test-ver.yml
