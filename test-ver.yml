@@ -1,19 +1,25 @@
 ---
-- hosts: all
+- name: Testing jre installation
+  hosts: all
+  vars:
+    openjdk_app: jre
+#    temurin_certs:
+#      - alias: my-private-ca
+#        file: '{{ playbook_dir }}/my-private-ca.pem'
   roles:
     - role: '{{ playbook_dir }}'
-      openjdk_app: jre
-#      temurin_certs:
-#        - alias: my-private-ca
-#          file: '{{ playbook_dir }}/my-private-ca.pem'
   tasks:
-    - ansible.builtin.import_tasks: test-jre-exe.yml
-- hosts: all
+    - name: Testing jre executable
+      ansible.builtin.import_tasks: test-jre-exe.yml
+- name: Testing jdk installation
+  hosts: all
+  vars:
+    openjdk_app: jdk
+#    temurin_certs:
+#      - alias: my-private-ca
+#        file: '{{ playbook_dir }}/my-private-ca.pem'
   roles:
     - role: '{{ playbook_dir }}'
-      openjdk_app: jdk
-#      temurin_certs:
-#        - alias: my-private-ca
-#          file: '{{ playbook_dir }}/my-private-ca.pem'
   tasks:
-    - ansible.builtin.import_tasks: test-jdk-exe.yml
+    - name: Testing jre executable
+      ansible.builtin.import_tasks: test-jdk-exe.yml
