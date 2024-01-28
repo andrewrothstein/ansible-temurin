@@ -76,6 +76,7 @@
   become: true
   become_user: root
   loop: '{{ temurin_certs | default([]) }}'
+  changed_when: false
   ansible.builtin.command: |
     {{ temurin_keytool_exe }}
     -import
