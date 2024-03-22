@@ -4,24 +4,24 @@
   vars:
     openjdk_ver:
       major: 8
-      minor: 392
-      b: '08'
+      minor: 402
+      b: '06'
 - name: Testing andrewrothstein.temurin (11)
   ansible.builtin.import_playbook: test-ver.yml
   vars:
     openjdk_ver:
       major: 11
       minor: 0
-      patch: '21'
-      b: '9'
+      patch: '22'
+      b: '7'
 - name: Testing andrewrohtstein.temurin (17)
   ansible.builtin.import_playbook: test-ver.yml
   vars:
     openjdk_ver:
       major: 17
       minor: 0
-      patch: '9'
-      b: '9'
+      patch: '10'
+      b: '7'
 - name: Testing andrewrothstein.temurin (18)
   ansible.builtin.import_playbook: test-ver.yml
   vars:
@@ -52,5 +52,5 @@
     openjdk_ver:
       major: 21
       b: "35"
-- name: Testing andrewrothstein.temurin
+- name: Testing andrewrothstein.temurin (latest)
   ansible.builtin.import_playbook: test-ver.yml
