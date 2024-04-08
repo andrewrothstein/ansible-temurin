@@ -2,7 +2,7 @@
 - name: Testing jre installation
   hosts: all
   vars:
-    openjdk_app: jre
+    temurin_app: jre
 #    temurin_certs:
 #      - alias: my-private-ca
 #        file: '{{ playbook_dir }}/my-private-ca.pem'
@@ -14,7 +14,7 @@
 - name: Testing jdk installation
   hosts: all
   vars:
-    openjdk_app: jdk
+    temurin_app: jdk
 #    temurin_certs:
 #      - alias: my-private-ca
 #        file: '{{ playbook_dir }}/my-private-ca.pem'

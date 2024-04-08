@@ -1,7 +1,7 @@
 ---
 # defaults file for temurin
-openjdk_app: jre
-openjdk_ver:
+temurin_app: jre
+temurin_ver:
   major: 21
   minor: 0
   patch: '2'
