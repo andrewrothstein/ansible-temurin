@@ -4,24 +4,24 @@
   vars:
     temurin_ver:
       major: 8
-      minor: 412
-      b: '08'
+      minor: 422
+      b: '05'
 - name: Testing andrewrothstein.temurin (11)
   ansible.builtin.import_playbook: test-ver.yml
   vars:
     temurin_ver:
       major: 11
       minor: 0
-      patch: '23'
-      b: '9'
+      patch: '24'
+      b: '8'
 - name: Testing andrewrohtstein.temurin (17)
   ansible.builtin.import_playbook: test-ver.yml
   vars:
     temurin_ver:
       major: 17
       minor: 0
-      patch: '11'
-      b: '9'
+      patch: '12'
+      b: '7'
 - name: Testing andrewrothstein.temurin (18)
   ansible.builtin.import_playbook: test-ver.yml
   vars:
@@ -52,7 +52,7 @@
     temurin_ver:
       major: 21
       minor: 0
-      patch: "3"
-      b: "9"
+      patch: "4"
+      b: "7"
 - name: Testing andrewrothstein.temurin (latest)
   ansible.builtin.import_playbook: test-ver.yml

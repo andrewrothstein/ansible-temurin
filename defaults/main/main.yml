@@ -4,8 +4,8 @@ temurin_app: jre
 temurin_ver:
   major: 22
   minor: 0
-  patch: '1'
-  b: '8'
+  patch: '2'
+  b: '9'
 
 temurin_arch_map:
   386: x32
