@@ -2,10 +2,10 @@
 # defaults file for temurin
 temurin_app: jre
 temurin_ver:
-  major: 22
+  major: 23
   minor: 0
   patch: '2'
-  b: '9'
+  b: '7'
 
 temurin_arch_map:
   386: x32
