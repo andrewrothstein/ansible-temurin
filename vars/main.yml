@@ -1,7 +1,7 @@
 ---
 # vars file for temurin
-temurin_os: '{{ temurin_os_prefix | default("") }}{{ ansible_system | lower }}'
-temurin_arch: '{{ temurin_arch_map[ansible_architecture] }}'
+temurin_os: '{{ temurin_os_prefix | default("") }}{{ ansible_facts["system"] | lower }}'
+temurin_arch: '{{ temurin_arch_map[ansible_facts["architecture"]] }}'
 
 temurin_ver_str: |-
   {%- if temurin_ver.major | int >= 9 -%}
