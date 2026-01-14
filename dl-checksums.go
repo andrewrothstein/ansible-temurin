@@ -171,6 +171,7 @@ func main() {
 	platforms := []Platform{
 		NewPlatform("aix", "ppc64"),
 		NewPlatform("alpine-linux", "x64"),
+		NewPlatform("alpine-linux", "aarch64"),
 		NewPlatform("linux", "s390x"),
 		NewPlatform("linux", "x64"),
 		NewPlatform("linux", "aarch64"),
