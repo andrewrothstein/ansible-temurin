@@ -6,6 +6,7 @@ import (
 	"io"
 	"net/http"
 	"strings"
+	"sync"
 )
 
 // https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21%2B35/OpenJDK21U-jre_x64_linux_hotspot_21_35.tar.gz
@@ -35,7 +36,7 @@ func (v *Ver) Fmt() string {
 
 func (v *Ver) lastRPath() string {
 	if v.Major >= 9 {
-		if v.Minor == 0 && v.Patch == ""  {
+		if v.Minor == 0 && v.Patch == "" {
 			// jdk-21%2B35
 			return fmt.Sprintf(
 				"jdk-%v%%2B%v",
@@ -98,24 +99,26 @@ func dl_url(url string) (string, error) {
 		return "", errors.New("not found")
 	}
 	defer resp.Body.Close()
-	if b, err := io.ReadAll(resp.Body); err == nil {
-		return string(b), nil
+	b, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return "", err
 	}
-	return "", err
+	return string(b), nil
 }
 
 func dl_checksum(checksum_url string, f string) (string, error) {
 	s, err := dl_url(checksum_url)
-	if err == nil {
-		lines := strings.Split(s, "\n")
-		for _, line := range lines {
-			sums := strings.Fields(line)
-			if len(sums) > 1 && strings.HasSuffix(sums[1], f) {
-				return sums[0], nil
-			}
+	if err != nil {
+		return "", err
+	}
+	lines := strings.Split(s, "\n")
+	for _, line := range lines {
+		sums := strings.Fields(line)
+		if len(sums) > 1 && strings.HasSuffix(sums[1], f) {
+			return sums[0], nil
 		}
 	}
-	return "", err
+	return "", fmt.Errorf("checksum not found for %s", f)
 }
 
 func indent(i uint64) string {
@@ -126,6 +129,12 @@ func indent(i uint64) string {
 	return b.String()
 }
 
+type checksumResult struct {
+	url      string
+	platform string
+	checksum string
+}
+
 func dl_app(
 	i uint64,
 	params *Params,
@@ -133,19 +142,37 @@ func dl_app(
 	v *Ver,
 	platforms []Platform,
 ) {
+	// fetch all platform checksums concurrently
+	results := make([]checksumResult, len(platforms))
+	var wg sync.WaitGroup
+	for idx, p := range platforms {
+		wg.Add(1)
+		go func(idx int, p Platform) {
+			defer wg.Done()
+			file := fmt.Sprintf(
+				"OpenJDK%dU-%s_%s_hotspot_%s.%s",
+				v.Major, app, p.FmtReverse(), v.Fmt(), p.ArchiveType,
+			)
+			checksumsurl := fmt.Sprintf(
+				"%s/%s/%s.sha256.txt",
+				params.Mirror, v.RPath(), file,
+			)
+			if checksum, err := dl_checksum(checksumsurl, file); err == nil {
+				results[idx] = checksumResult{
+					url:      checksumsurl,
+					platform: p.Fmt(),
+					checksum: checksum,
+				}
+			}
+		}(idx, p)
+	}
+	wg.Wait()
+
 	fmt.Printf("%s%s:\n", indent(i), app)
-	for _, p := range platforms {
-		file := fmt.Sprintf(
-			"OpenJDK%dU-%s_%s_hotspot_%s.%s",
-			v.Major, app, p.FmtReverse(), v.Fmt(), p.ArchiveType,
-		)
-		checksumsurl := fmt.Sprintf(
-			"%s/%s/%s.sha256.txt",
-			params.Mirror, v.RPath(), file,
-		)
-		if checksum, err := dl_checksum(checksumsurl, file); err == nil {
-			fmt.Printf("%s# %s\n", indent(i+1), checksumsurl)
-			fmt.Printf("%s%s: sha256:%s\n", indent(i+1), p.Fmt(), checksum)
+	for _, r := range results {
+		if r.checksum != "" {
+			fmt.Printf("%s# %s\n", indent(i+1), r.url)
+			fmt.Printf("%s%s: sha256:%s\n", indent(i+1), r.platform, r.checksum)
 		}
 	}
 }
@@ -204,6 +231,7 @@ func main() {
 		{Major: 8, Minor: 432, Patch: "0", BVer: "06"},
 		{Major: 8, Minor: 442, Patch: "0", BVer: "06"},
 		{Major: 8, Minor: 472, Patch: "0", BVer: "08"},
+		{Major: 8, Minor: 482, Patch: "0", BVer: "08"},
 		{Major: 11, Minor: 0, Patch: "13", BVer: "8"},
 		{Major: 11, Minor: 0, Patch: "14.1", BVer: "1"},
 		{Major: 11, Minor: 0, Patch: "15", BVer: "10"},
@@ -220,6 +248,7 @@ func main() {
 		{Major: 11, Minor: 0, Patch: "25", BVer: "9"},
 		{Major: 11, Minor: 0, Patch: "26", BVer: "4"},
 		{Major: 11, Minor: 0, Patch: "29", BVer: "7"},
+		{Major: 11, Minor: 0, Patch: "30", BVer: "7"},
 		{Major: 16, Minor: 0, Patch: "2", BVer: "7"},
 		{Major: 17, Minor: 0, Patch: "1", BVer: "12"},
 		{Major: 17, Minor: 0, Patch: "2", BVer: "8"},
@@ -237,6 +266,7 @@ func main() {
 		{Major: 17, Minor: 0, Patch: "13", BVer: "11"},
 		{Major: 17, Minor: 0, Patch: "14", BVer: "7"},
 		{Major: 17, Minor: 0, Patch: "17", BVer: "10"},
+		{Major: 17, Minor: 0, Patch: "18", BVer: "8"},
 		{Major: 18, Minor: 0, Patch: "1", BVer: "10"},
 		{Major: 18, Minor: 0, Patch: "2", BVer: "9"},
 		{Major: 18, Minor: 0, Patch: "2.1", BVer: "1"},
@@ -257,6 +287,8 @@ func main() {
 		{Major: 23, Minor: 0, Patch: "2", BVer: "7"},
 		{Major: 24, Minor: 0, Patch: "2", BVer: "12"},
 		{Major: 25, Minor: 0, Patch: "1", BVer: "8"},
+		{Major: 25, Minor: 0, Patch: "2", BVer: "10"},
+		{Major: 26, Minor: 0, Patch: "", BVer: "35"},
 	}
 	dlall(1, &params, versions, platforms)
 }

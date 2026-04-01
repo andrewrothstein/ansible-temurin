@@ -38,7 +38,16 @@ temurin_archive: |-
 temurin_tmp_archive: /tmp/{{ temurin_archive }}
 
 temurin_platform: '{{ temurin_os }}_{{ temurin_arch }}'
-temurin_checksum: '{{ temurin_checksums[temurin_ver_str][temurin_app][temurin_platform] }}'
+temurin_platform_supported: >-
+  {{
+    temurin_ver_str in temurin_checksums
+    and temurin_app in (temurin_checksums[temurin_ver_str] | default({}))
+    and temurin_platform in (temurin_checksums[temurin_ver_str][temurin_app] | default({}))
+  }}
+temurin_checksum: >-
+  {{ temurin_checksums[temurin_ver_str][temurin_app][temurin_platform]
+     if temurin_platform_supported | bool
+     else '' }}
 temurin_archive_url: '{{ temurin_mirror }}/{{ temurin_rpath }}/{{ temurin_archive }}'
 
 temurin_install_dir: '{{ temurin_parent_install_dir }}/openjdk'
