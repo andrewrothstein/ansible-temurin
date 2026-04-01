@@ -98,24 +98,26 @@ func dl_url(url string) (string, error) {
 		return "", errors.New("not found")
 	}
 	defer resp.Body.Close()
-	if b, err := io.ReadAll(resp.Body); err == nil {
-		return string(b), nil
+	b, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return "", err
 	}
-	return "", err
+	return string(b), nil
 }
 
 func dl_checksum(checksum_url string, f string) (string, error) {
 	s, err := dl_url(checksum_url)
-	if err == nil {
-		lines := strings.Split(s, "\n")
-		for _, line := range lines {
-			sums := strings.Fields(line)
-			if len(sums) > 1 && strings.HasSuffix(sums[1], f) {
-				return sums[0], nil
-			}
+	if err != nil {
+		return "", err
+	}
+	lines := strings.Split(s, "\n")
+	for _, line := range lines {
+		sums := strings.Fields(line)
+		if len(sums) > 1 && strings.HasSuffix(sums[1], f) {
+			return sums[0], nil
 		}
 	}
-	return "", err
+	return "", fmt.Errorf("checksum not found for %s", f)
 }
 
 func indent(i uint64) string {
