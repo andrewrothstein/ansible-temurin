@@ -6,6 +6,7 @@ import (
 	"io"
 	"net/http"
 	"strings"
+	"sync"
 )
 
 // https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21%2B35/OpenJDK21U-jre_x64_linux_hotspot_21_35.tar.gz
@@ -35,7 +36,7 @@ func (v *Ver) Fmt() string {
 
 func (v *Ver) lastRPath() string {
 	if v.Major >= 9 {
-		if v.Minor == 0 && v.Patch == ""  {
+		if v.Minor == 0 && v.Patch == "" {
 			// jdk-21%2B35
 			return fmt.Sprintf(
 				"jdk-%v%%2B%v",
@@ -128,6 +129,12 @@ func indent(i uint64) string {
 	return b.String()
 }
 
+type checksumResult struct {
+	url      string
+	platform string
+	checksum string
+}
+
 func dl_app(
 	i uint64,
 	params *Params,
@@ -135,19 +142,37 @@ func dl_app(
 	v *Ver,
 	platforms []Platform,
 ) {
+	// fetch all platform checksums concurrently
+	results := make([]checksumResult, len(platforms))
+	var wg sync.WaitGroup
+	for idx, p := range platforms {
+		wg.Add(1)
+		go func(idx int, p Platform) {
+			defer wg.Done()
+			file := fmt.Sprintf(
+				"OpenJDK%dU-%s_%s_hotspot_%s.%s",
+				v.Major, app, p.FmtReverse(), v.Fmt(), p.ArchiveType,
+			)
+			checksumsurl := fmt.Sprintf(
+				"%s/%s/%s.sha256.txt",
+				params.Mirror, v.RPath(), file,
+			)
+			if checksum, err := dl_checksum(checksumsurl, file); err == nil {
+				results[idx] = checksumResult{
+					url:      checksumsurl,
+					platform: p.Fmt(),
+					checksum: checksum,
+				}
+			}
+		}(idx, p)
+	}
+	wg.Wait()
+
 	fmt.Printf("%s%s:\n", indent(i), app)
-	for _, p := range platforms {
-		file := fmt.Sprintf(
-			"OpenJDK%dU-%s_%s_hotspot_%s.%s",
-			v.Major, app, p.FmtReverse(), v.Fmt(), p.ArchiveType,
-		)
-		checksumsurl := fmt.Sprintf(
-			"%s/%s/%s.sha256.txt",
-			params.Mirror, v.RPath(), file,
-		)
-		if checksum, err := dl_checksum(checksumsurl, file); err == nil {
-			fmt.Printf("%s# %s\n", indent(i+1), checksumsurl)
-			fmt.Printf("%s%s: sha256:%s\n", indent(i+1), p.Fmt(), checksum)
+	for _, r := range results {
+		if r.checksum != "" {
+			fmt.Printf("%s# %s\n", indent(i+1), r.url)
+			fmt.Printf("%s%s: sha256:%s\n", indent(i+1), r.platform, r.checksum)
 		}
 	}
 }
