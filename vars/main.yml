@@ -65,6 +65,7 @@ temurin_install_subdir: |-
   {%- if temurin_app == "jre" %}-jre{% endif -%}
 
 temurin_install_link: '{{ temurin_parent_install_dir }}/openjdk-{{ temurin_app }}'
+temurin_bin_dir: '{{ temurin_parent_install_dir }}/bin'
 temurin_keytool_exe: '{{ temurin_install_subdir }}/bin/keytool'
 
 temurin_keystore: |-

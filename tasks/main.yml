@@ -68,6 +68,23 @@
         src: '{{ temurin_install_subdir }}'
         dest: '{{ temurin_install_link }}'
         state: link
+    - name: Find executables in {{ temurin_install_subdir }}/bin
+      become: true
+      become_user: root
+      ansible.builtin.find:
+        paths: '{{ temurin_install_subdir }}/bin'
+        file_type: file
+      register: temurin_bin_files
+    - name: Linking executables from {{ temurin_install_link }}/bin into {{ temurin_bin_dir }}
+      become: true
+      become_user: root
+      loop: '{{ temurin_bin_files.files }}'
+      loop_control:
+        label: '{{ item.path | basename }}'
+      ansible.builtin.file:
+        src: '{{ temurin_install_link }}/bin/{{ item.path | basename }}'
+        dest: '{{ temurin_bin_dir }}/{{ item.path | basename }}'
+        state: link
     - name: Adding openjdk to default path and easing systemd integration
       become: true
       become_user: root

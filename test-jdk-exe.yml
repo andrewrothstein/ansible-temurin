@@ -1,6 +1,6 @@
 ---
 - name: Executing 'javac -version'
-  ansible.builtin.command: /usr/local/openjdk-jdk/bin/javac -version
+  ansible.builtin.command: javac -version
   changed_when: false
   register: temurin_jdk_test_output
 - name: Output (stdout) from 'javac -version'
